@@ -1,0 +1,36 @@
+
+
+// ==== BUTTONS:
+%btn { 
+  display: inline-block;
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white); 
+}
+
+:is(%btn, %nav-link) {
+  transition: all 300ms ease-out;  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

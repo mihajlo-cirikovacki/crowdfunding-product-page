@@ -1,0 +1,284 @@
+// Import all. (also works with nameSpace)
+@use '../util' as *;
+
+
+// ====================== HEADER:
+.header {
+  max-width: 100%;
+  min-height: 40rem;
+  background-image: linear-gradient( 
+    180deg,
+    rgba(0, 0, 0, .3),
+    rgba(0, 0, 0, .3)
+  ), 
+  url(/images/image-hero-desktop.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 4.8rem 16.5rem 0 16.6rem;
+  
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  &__logo {
+    align-self: flex-start;
+    justify-self: center;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+  
+  &__link:link, 
+  &__link:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+// ====================== MAIN:
+.main {
+  max-width: 73rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 35%;
+  display: grid;
+  row-gap: 2.4rem;
+}
+
+// ====================== INTRO:
+.header-intro {
+  padding: 5.6rem 4.8rem 4.8rem;
+  border-radius: .8rem;
+  background-color: var(--white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &__logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -2%;
+    transform: translate(10%, 10%);
+    align-self: center;
+    justify-self: center;
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    line-height: 3.4rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+
+  &__subheading {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    & .btn--header {
+      @extend %btn;
+      padding: 1.7rem 4.1rem 1.9rem 4rem;
+      background-color: var(--moderate-cyan);
+      line-height: 2rem;
+    }
+
+    & .btn--bookmark {
+      @extend %btn;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.24rem;
+      line-height: 2rem;
+      color: var(--dark-gray);
+      
+      & span {
+        padding: 1.7rem 2.4rem 1.9rem 0;
+      }
+    }
+  }
+}
+
+// ====================== STATS:
+.section-stats {
+  padding: 4.8rem; // Menjam
+  background-color: var(--white);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 3.7rem;
+  
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    position: relative;
+
+    &:nth-child(2), 
+    &:nth-child(3) {
+      padding-left: 4.7rem;
+    }
+
+    &:first-child::after,
+    &:nth-child(2)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: .1rem;
+      background-color: var(--dark-gray);
+      opacity: 0.15;
+    }
+  }
+
+  &__number {
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 3.9rem;
+    color: var(--black);
+
+    & + small {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
+  } 
+}
+
+// ====================== FEATURED:
+.section-featured {
+  padding: 4.8rem;
+  background-color: var(--white);
+}
+
+.featured {
+
+  &__about {
+    margin-bottom: 4rem;
+
+    &-heading {
+      font-size: 2rem;
+      line-height: 2.4rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 3.5rem;
+    }
+
+    &-description,
+    &-description--2 {
+      font-size: 1.6rem;
+      line-height: 3rem;
+    }
+
+    &-description {
+      margin-bottom: 2.5rem;
+    }
+  }
+}
+
+
+.featured {
+
+  &__stands {
+    display: grid;
+    gap: 2.4rem;
+  }
+}
+
+.featured__stand {
+  padding: 3.8rem 3.2rem 3.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: .8rem;
+
+  &:last-of-type {
+    opacity: 0.5;
+  }
+
+  &-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-heading {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2.4rem;
+  }
+
+  &-padge {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    font-weight: 500;
+    color: var(--moderate-cyan);
+  }
+
+  &-description {
+    font-size: 1.6rem;
+    line-height: 3rem;
+    margin-bottom: 2.4rem;
+  }
+
+  &-reward {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-left {
+      display: flex;
+      gap: .8rem;
+      align-items: center;
+    }
+  }
+
+  &-left-num {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--black);
+
+    & + small {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
+  }
+}
+
+.btn--reward {
+  @extend %btn;
+  padding: 1.5rem 3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: var(--moderate-cyan);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
