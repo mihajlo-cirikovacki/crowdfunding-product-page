@@ -119,6 +119,7 @@
 .section-stats {
   padding: 4.8rem; // Menjam
   background-color: var(--white);
+  border-radius: .8rem;
 }
 
 .stats {
@@ -166,6 +167,7 @@
 .section-featured {
   padding: 4.8rem;
   background-color: var(--white);
+  border-radius: .8rem;
 }
 
 .featured {
@@ -208,7 +210,7 @@
   border-radius: .8rem;
 
   &:last-of-type {
-    opacity: 0.5;
+    opacity: .5;
   }
 
   &-box {
@@ -268,6 +270,7 @@
   font-weight: 700;
   background-color: var(--moderate-cyan);
 }
+
 
 
 
