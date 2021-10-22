@@ -8,11 +8,11 @@
   // == NEUTRAL:
   --black: hsl(0, 0%, 0%);
   --dark-gray: hsl(0, 0%, 48%);
+  --light-gray: hsl(0, 0%, 85%);
   --white: hsl(0, 0%, 100%);
 
-
   --shadow: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.0001) 100%);
-  --proba: #3197EE;
+  --proba: hsla(0, 0%, 0%, 0.15);
 }
 
 
