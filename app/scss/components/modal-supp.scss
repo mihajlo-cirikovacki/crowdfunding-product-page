@@ -132,12 +132,22 @@
     font-size: 1.6rem;
     color: var(--black);
     margin-bottom: 1.7rem;
+    transition: all 200ms ease-out;
+
+    &:hover {
+      color: var(--dark-cyan);
+    }
   }
 
   &__pledge {
     font-size: 1.6rem;
     font-weight: 500;
     color: var(--moderate-cyan);
+    transition: all 200ms ease-out;
+
+    &:hover {
+      color: var(--dark-cyan);
+    }
   }
 
   &__description {
@@ -220,6 +230,11 @@
     background-color: var(--moderate-cyan);
     font-size: 1.4rem;
     font-weight: 700;
+    transition: all 300ms ease-out;
+
+    &:hover {
+      background-color: var(--dark-cyan);
+    }
   }
 }
 

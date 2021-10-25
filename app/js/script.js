@@ -1,6 +1,7 @@
 'use strict';
 
 const btnHeader = document.querySelector('.btn--header');
+const bookmarkBtn = document.querySelector('.btn--bookmark');
 const modalSupp = document.querySelector('.section-support');
 const overlay = document.querySelector('.overlay');
 const closeModalBtn = document.querySelector('.section-support__close');
@@ -46,8 +47,26 @@ const renderPledgeSupp = function(e) {
   currStand.style.borderRadius = '0';
 }
 
+const bookmared = function() {
+  const span = this.querySelector('span');
+  const img = this.querySelector('img');
+
+  if(span.textContent === 'Bookmark') {
+    span.textContent = 'Bookmarked';
+    span.style.color = 'var(--dark-cyan)';
+    this.style.backgroundColor = 'var(--light-cyan)';
+    img.style.filter = 'var(--filterSvgGreen)';
+  }else {
+    span.textContent = 'Bookmark';
+    span.style.color = 'var(--dark-gray)';
+    this.style.backgroundColor = 'var(--background)';
+    img.style.filter = 'var(--filterSvgGray)';
+  }
+}
 
 // ======================= EVENT LISTENERS:
+bookmarkBtn.addEventListener('click', bookmared);
+
 btnHeader.addEventListener('click', closeModal);
 
 closeModalBtn.addEventListener('click', (e) => {
@@ -62,10 +81,16 @@ document.addEventListener('keydown', (e) => {
 
 suppStands.addEventListener('change', (e) => {
   const currWraper = e.target.closest('.stand-wraper');
-  if(!currWraper) return;
-  const pledge = currWraper.querySelector('.pledge')
-  if(pledge) pledge.remove();
-  renderPledgeSupp(e);
+  const currRadioBtn = currWraper.querySelector('.stand__radio-input');
+  if(!currRadioBtn) return;
+  const pledges = document.querySelectorAll('.pledge');
+
+  // Check if pladges exist, if extist delete them:
+  if (pledges) pledges.forEach(pledge => {
+    pledge.remove();
+  });
+  // Render pledge:
+  renderPledgeSupp(e); 
 });
 
 
