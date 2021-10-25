@@ -20,9 +20,28 @@
   justify-content: space-between;
   position: relative;
 
+  // PHONE
+  @include respond('phone') {
+    min-height: 37.5rem;
+    background-image: linear-gradient( 
+    180deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0)
+    ), 
+    url(/images/image-hero-mobile.jpg); 
+    padding: 4rem 3rem 0;
+  }
+
   &__logo {
     align-self: flex-start;
     justify-self: center;
+  }
+}
+
+.nav {
+  // TAB PORT
+  @include respond('tab-port') {
+    display: none;
   }
 }
 
@@ -52,6 +71,12 @@
   top: 35%;
   display: grid;
   row-gap: 2.4rem;
+
+  // PHONE:
+  @include respond('phone') {
+    padding: 0 3rem;
+    row-gap: 3rem;
+  }
 }
 
 // ====================== INTRO:
@@ -63,6 +88,11 @@
   display: flex;
   flex-direction: column;
 
+  // PHONE:
+  @include respond('phone') {
+    padding: 6.5rem 3rem 5rem;
+  }
+
   &__logo {
     position: absolute;
     left: 0;
@@ -72,6 +102,11 @@
     transform: translate(10%, 10%);
     align-self: center;
     justify-self: center;
+
+    // PHONE:
+    @include respond('phone') {
+      right: 2rem;
+    }
   }
 
   &__heading {
@@ -86,6 +121,14 @@
     font-size: 1.6rem;
     font-weight: 400;
     margin-bottom: 4rem;
+
+    // PHONE:
+    @include respond('phone') {
+      text-align: center;
+      font-size: 1.75rem;
+      line-height: 3rem;
+      margin-bottom: 3rem;
+    }
   }
 
   &__buttons {
@@ -98,6 +141,12 @@
       background-color: var(--moderate-cyan);
       line-height: 2rem;
       transition: all 300ms ease-out;
+
+      // PHONE:
+      @include respond('phone') {
+        padding: 2.5rem 4.95rem;
+        font-size: 2rem;
+      }
   
       &:hover {
         background-color: var(--dark-cyan);
@@ -113,6 +162,11 @@
       line-height: 2rem;
       color: var(--dark-gray);
       transition: all 300ms ease-out;
+
+      // PHONE:
+      @include respond('phone') {
+        display: none; // Da namestim
+      }
   
       &:hover {
         background-color: var(--light-gray);
@@ -136,12 +190,24 @@
   padding: 4.8rem; // Menjam
   background-color: var(--white);
   border-radius: .8rem;
+
+  // PHONE:
+  @include respond('phone') {
+    padding: 4rem 3.125rem 5rem;
+  }
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 3.7rem;
+
+  // PHONE:
+  @include respond('phone') {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+  }
   
   &__box {
     display: flex;
@@ -152,6 +218,20 @@
     &:nth-child(2), 
     &:nth-child(3) {
       padding-left: 4.7rem;
+
+      // PHONE:
+      @include respond('phone') {
+        padding-left: 0;
+        padding-top: 3rem;
+      }
+    }
+
+    &:nth-child(1), 
+    &:nth-child(2) {
+      // PHONE:
+      @include respond('phone') {
+        padding-bottom: 3rem;
+      }
     }
 
     &:first-child::after,
@@ -163,6 +243,22 @@
       width: .1rem;
       background-color: var(--dark-gray);
       opacity: 0.15;
+
+      // PHONE:
+      @include respond('phone') {
+        bottom: 0;
+        left: 10%;
+        right: 10%;
+        width: 10rem;
+        height: .1rem;
+      }
+    }
+
+    &:nth-child(2)::after {
+      // PHONE:
+      @include respond('phone') {
+        left: -12%;
+      }
     }
   }
 
@@ -197,6 +293,11 @@
   padding: 4.8rem;
   background-color: var(--white);
   border-radius: .8rem;
+
+  // PHONE:
+  @include respond('phone') {
+    padding: 5rem 3rem;
+  }
 }
 
 .featured {
@@ -216,6 +317,11 @@
     &-description--2 {
       font-size: 1.6rem;
       line-height: 3rem;
+
+      // PHONE:
+      @include respond('phone') {
+        font-size: 1.75rem;
+      }
     }
 
     &-description {
@@ -245,6 +351,11 @@
   &-box {
     display: flex;
     justify-content: space-between;
+
+    // PHONE:
+    @include respond('phone') {
+      flex-direction: column;
+    }
   }
 
   &-heading {
@@ -253,6 +364,11 @@
     font-weight: 700;
     color: var(--black);
     margin-bottom: 2.4rem;
+
+    // PHONE:
+    @include respond('phone') {
+      margin-bottom: 1rem;
+    }
   }
 
   &-padge {
@@ -260,18 +376,35 @@
     line-height: 1.8rem;
     font-weight: 500;
     color: var(--moderate-cyan);
+
+    // PHONE:
+    @include respond('phone') {
+      margin-bottom: 3rem;
+    }
   }
 
   &-description {
     font-size: 1.6rem;
     line-height: 3rem;
     margin-bottom: 2.4rem;
+
+    // PHONE:
+    @include respond('phone') {
+      font-size: 1.75rem;
+    }
   }
 
   &-reward {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    // PHONE:
+    @include respond('phone') {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3rem;
+    }
 
     &-left {
       display: flex;
@@ -284,6 +417,11 @@
     font-size: 3.2rem;
     font-weight: 700;
     color: var(--black);
+
+     // PHONE:
+    @include respond('phone') {
+      font-size: 4rem;
+    }
 
     & + small {
       font-size: 1.5rem;

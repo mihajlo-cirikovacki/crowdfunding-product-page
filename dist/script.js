@@ -27,6 +27,12 @@ const addCloseThankYouMSG = function() {
   overlay.classList.add('hidden');
 }
 
+const removeThankYouMsg = function() {
+  overlay2.classList.add('hidden-2');
+  messageContainer.classList.add('.hidden-2');
+  messageContainer.querySelector('.message').remove();
+}
+
 
 // RENDER PLEDGE SUPPORT:
 const renderPledgeSupp = function(e) {
@@ -71,7 +77,7 @@ const bookmarked = function() {
     span.style.color = 'var(--dark-cyan)';
     this.style.backgroundColor = 'var(--light-cyan)';
     img.style.filter = 'var(--filterSvgGreen)';
-  }else {
+  } else {
     span.textContent = 'Bookmark';
     span.style.color = 'var(--dark-gray)';
     this.style.backgroundColor = 'var(--background)';
@@ -103,8 +109,6 @@ const renderThankYouMsg  = function() {
 }
 
 
-
-
 // ======================= EVENT LISTENERS:
 bookmarkBtn.addEventListener('click', bookmarked);
 
@@ -126,7 +130,10 @@ closeModalBtn.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') addCloseModal();
+  if(e.key === 'Escape') {
+    modalSupp.classList.add('hidden');
+    overlay.classList.add('hidden');
+  }
 })
 
 sectionSupport.addEventListener('change', (e) => {
@@ -154,20 +161,19 @@ suppStands.addEventListener('click', (e) => {
   // Check for left number:
   if (standNumLeft && standNumLeft.textContent === '0') return;
 
-
   console.log(currButton);
   addCloseThankYouMSG();
   renderThankYouMsg();
 });
 
-
 messageContainer.addEventListener('click', (e) => {
   const button = e.target.closest('.message__btn');
   if(!button) return;
-  overlay2.classList.add('hidden-2');
-  messageContainer.classList.add('.hidden-2');
-  messageContainer.querySelector('.message').remove();
+  removeThankYouMsg();
 });
 
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') removeThankYouMsg();
+});
 
 //# sourceMappingURL=script.js.map
