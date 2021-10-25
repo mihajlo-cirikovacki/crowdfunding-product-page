@@ -21,13 +21,13 @@ const addCloseModal = function() {
 const renderPledgeSupp = function(e) {
   const currWraper = e.target.closest('.stand-wraper');
   if(!currWraper) return;
+  const standNumLeft = currWraper.querySelector('.stand__left-number');
   const currStand = e.target.closest('.stand');
+  // Creating new pledge element:
   const pledge = document.createElement('div');
   pledge.classList.add('pledge');
   currWraper.append(pledge);
   
-  const standNumLeft = currWraper.querySelector('.stand__left-number');
- 
   const html = `
     <div class="pledge__input-wraper">  
       <input type="number" value="25" min="25" class="pledge__input">
@@ -42,13 +42,16 @@ const renderPledgeSupp = function(e) {
       <button class="pledge__btn">Continue</button>
     </form>
   `;
- 
+  
+  // Adding pledge element to the DOM.
   pledge.insertAdjacentHTML('afterbegin', html2);
+  // Changing some styles:
   currWraper.style.border = "1px solid var(--dark-cyan)";
   currStand.style.borderRadius = '0';
 }
 
-const bookmared = function() {
+// Render bookmarked styled button:
+const bookmarked = function() {
   const span = this.querySelector('span');
   const img = this.querySelector('img');
 
@@ -66,7 +69,7 @@ const bookmared = function() {
 }
 
 // ======================= EVENT LISTENERS:
-bookmarkBtn.addEventListener('click', bookmared);
+bookmarkBtn.addEventListener('click', bookmarked);
 
 btnHeader.addEventListener('click', addCloseModal);
 
@@ -97,6 +100,9 @@ suppStands.addEventListener('change', (e) => {
 
   // Check if pladges exist, if extist delete them:
   if (pledges) pledges.forEach(pledge => {
+    const standWraper = pledge.closest('.stand-wraper');
+    standWraper.style.border = 'none';
+    standWraper.querySelector('.stand').style.borderRadius = '.8rem';
     pledge.remove();
   });
   // Render pledge:
