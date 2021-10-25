@@ -27,7 +27,7 @@ h1 {
 }
 
 */
-.pledge__btn, .header-intro__buttons .btn--header, .header-intro__buttons .btn--bookmark, .btn--reward {
+.message__btn, .pledge__btn, .header-intro__buttons .btn--header, .header-intro__buttons .btn--bookmark, .btn--reward {
   display: inline-block;
   border: none;
   border-radius: 3rem;
@@ -37,7 +37,7 @@ h1 {
   color: var(--white);
 }
 
-:is(.pledge__btn, .header-intro__buttons .btn--header, .header-intro__buttons .btn--bookmark, .btn--reward) {
+:is(.message__btn, .pledge__btn, .header-intro__buttons .btn--header, .header-intro__buttons .btn--bookmark, .btn--reward) {
   transition: all 300ms ease-out;
 }
 
@@ -45,7 +45,23 @@ h1 {
   display: none;
 }
 
+.hidden-2 {
+  display: none;
+}
+
 .overlay {
+  position: fixed;
+  /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 5555;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.overlay-2 {
   position: fixed;
   /* Stay in place */
   left: 0;
@@ -524,6 +540,57 @@ a:active {
   transition: all 300ms ease-out;
 }
 .pledge__btn:hover {
+  background-color: var(--dark-cyan);
+}
+
+.message-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  max-width: 54rem;
+  padding: 4.8rem;
+  border-radius: 0.8rem;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.message__icon {
+  width: 9rem;
+  margin-bottom: 4.75rem;
+}
+.message__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.message__heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 1.6rem;
+}
+.message__description {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  margin-bottom: 3.2rem;
+  text-align: center;
+}
+.message__btn {
+  padding: 1.6rem 3.2rem;
+  background-color: var(--moderate-cyan);
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: all 300ms ease-out;
+}
+.message__btn:hover {
   background-color: var(--dark-cyan);
 }
 /*# sourceMappingURL=style.css.map */

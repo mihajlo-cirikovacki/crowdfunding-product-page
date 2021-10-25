@@ -7,7 +7,10 @@ const modalSupp = document.querySelector('.section-support');
 const overlay = document.querySelector('.overlay');
 const closeModalBtn = document.querySelector('.section-support__close');
 const inputContainer = document.querySelector('.stand__input-container');
+const sectionSupport = document.querySelector('.section-support');
 const suppStands = document.querySelector('.support__stands');
+const overlay2 = document.querySelector('.overlay-2');
+const messageContainer = document.querySelector('.message-container');
 
 // ======================= FUNCTIONS:
 
@@ -16,6 +19,14 @@ const addCloseModal = function() {
   modalSupp.classList.toggle('hidden');
   overlay.classList.toggle('hidden');
 }
+
+const addCloseThankYouMSG = function() {
+  messageContainer.classList.toggle('hidden-2');
+  overlay2.classList.toggle('hidden-2');
+  modalSupp.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
 
 // RENDER PLEDGE SUPPORT:
 const renderPledgeSupp = function(e) {
@@ -37,10 +48,10 @@ const renderPledgeSupp = function(e) {
 
   const html2 = `
     <p class="pledge__descripton">Enter your pledge</p>
-    <form class="pledge__form">
+    <div class="pledge__form">
       ${standNumLeft && standNumLeft.textContent !== '0' ? html : ''}
       <button class="pledge__btn">Continue</button>
-    </form>
+    </div>
   `;
   
   // Adding pledge element to the DOM.
@@ -68,6 +79,32 @@ const bookmarked = function() {
   }
 }
 
+// RENDER THANK YOU MESSAGE:
+const renderThankYouMsg  = function() {
+  // Creating message element:
+  const message = document.createElement('div');
+  message.classList.add('message');
+  messageContainer.append(message);
+
+  const html = `
+    <img src="/images/icon-check.svg" alt="Icon Check" class="message__icon">
+    <div class="message__container">
+      <h2 class="message__heading">Thanks for your support!</h2>
+      <p class="message__description">
+        Your pledge brings us one step closer to sharing 
+        Mastercraft Bamboo Monitor Riser worldwide. 
+        You will get an email once our campaign is completed.
+      </p>
+      <button class="message__btn">Got it!</button>
+    </div>
+  `;
+
+  message.insertAdjacentHTML('afterbegin', html);
+}
+
+
+
+
 // ======================= EVENT LISTENERS:
 bookmarkBtn.addEventListener('click', bookmarked);
 
@@ -92,7 +129,7 @@ document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') addCloseModal();
 })
 
-suppStands.addEventListener('change', (e) => {
+sectionSupport.addEventListener('change', (e) => {
   const currWraper = e.target.closest('.stand-wraper');
   const currRadioBtn = currWraper.querySelector('.stand__radio-input');
   if(!currRadioBtn) return;
@@ -109,10 +146,28 @@ suppStands.addEventListener('change', (e) => {
   renderPledgeSupp(e); 
 });
 
+suppStands.addEventListener('click', (e) => {
+  const currButton = e.target.closest('.pledge__btn');
+  if (!currButton) return;
+  const currWraper = e.target.closest('.stand-wraper');
+  const standNumLeft = currWraper.querySelector('.stand__left-number');
+  // Check for left number:
+  if (standNumLeft && standNumLeft.textContent === '0') return;
 
 
+  console.log(currButton);
+  addCloseThankYouMSG();
+  renderThankYouMsg();
+});
 
 
+messageContainer.addEventListener('click', (e) => {
+  const button = e.target.closest('.message__btn');
+  if(!button) return;
+  overlay2.classList.add('hidden-2');
+  messageContainer.classList.add('.hidden-2');
+  messageContainer.querySelector('.message').remove();
+});
 
 
 //# sourceMappingURL=script.js.map
