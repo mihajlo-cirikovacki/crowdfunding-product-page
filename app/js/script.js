@@ -2,6 +2,7 @@
 
 const btnHeader = document.querySelector('.btn--header');
 const bookmarkBtn = document.querySelector('.btn--bookmark');
+const featured = document.querySelector('.featured');
 const modalSupp = document.querySelector('.section-support');
 const overlay = document.querySelector('.overlay');
 const closeModalBtn = document.querySelector('.section-support__close');
@@ -11,7 +12,7 @@ const suppStands = document.querySelector('.support__stands');
 // ======================= FUNCTIONS:
 
 // CLOSE MODAL:
-const closeModal = function() {
+const addCloseModal = function() {
   modalSupp.classList.toggle('hidden');
   overlay.classList.toggle('hidden');
 }
@@ -67,16 +68,25 @@ const bookmared = function() {
 // ======================= EVENT LISTENERS:
 bookmarkBtn.addEventListener('click', bookmared);
 
-btnHeader.addEventListener('click', closeModal);
+btnHeader.addEventListener('click', addCloseModal);
+
+featured.addEventListener('click', (e) => {
+  const currButton = e.target.closest('.btn--reward');
+  if (!currButton) return;
+  const left = currButton.previousElementSibling;
+  const numLeft = left.querySelector('.featured__stand-left-num');
+  // Check if left number is 0:
+  if (numLeft.textContent !== '0') addCloseModal();
+});
 
 closeModalBtn.addEventListener('click', (e) => {
   const icon = e.target.closest('.section-support__close');
   if(!icon) return;
-  closeModal();
+  addCloseModal();
 });
 
 document.addEventListener('keydown', (e) => {
-  if(e.key === 'Escape') closeModal();
+  if(e.key === 'Escape') addCloseModal();
 })
 
 suppStands.addEventListener('change', (e) => {
