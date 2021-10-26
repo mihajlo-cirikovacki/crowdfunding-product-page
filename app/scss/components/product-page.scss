@@ -22,14 +22,14 @@
 
   // PHONE
   @include respond('phone') {
-    min-height: 37.5rem;
+    min-height: 30rem;
     background-image: linear-gradient( 
     180deg,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0)
     ), 
     url(/images/image-hero-mobile.jpg); 
-    padding: 4rem 3rem 0;
+    padding: 3.2rem 2.4rem 0;
   }
 
   &__logo {
@@ -74,8 +74,8 @@
 
   // PHONE:
   @include respond('phone') {
-    padding: 0 3rem;
-    row-gap: 3rem;
+    padding: 0 2.4rem;
+    top: 36.5%;
   }
 }
 
@@ -90,7 +90,7 @@
 
   // PHONE:
   @include respond('phone') {
-    padding: 6.5rem 3rem 5rem;
+    padding: 5.2rem 2.4rem 4rem;
   }
 
   &__logo {
@@ -106,6 +106,7 @@
     // PHONE:
     @include respond('phone') {
       right: 2rem;
+      top: -3.4rem;
     }
   }
 
@@ -115,6 +116,13 @@
     font-weight: 700;
     color: var(--black);
     margin-bottom: 1.5rem;
+
+    // PHONE:
+    @include respond('phone') {
+      font-size: 2rem;
+      line-height: 2.4rem;
+      margin-right: 1rem;
+    }
   }
 
   &__subheading {
@@ -125,9 +133,9 @@
     // PHONE:
     @include respond('phone') {
       text-align: center;
-      font-size: 1.75rem;
-      line-height: 3rem;
-      margin-bottom: 3rem;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      margin-bottom: 2.4rem;
     }
   }
 
@@ -144,8 +152,8 @@
 
       // PHONE:
       @include respond('phone') {
-        padding: 2.5rem 4.95rem;
-        font-size: 2rem;
+        padding: 1.8rem 3.95rem;
+        font-size: 1.6rem;
       }
   
       &:hover {
@@ -161,19 +169,23 @@
       gap: 1.24rem;
       line-height: 2rem;
       color: var(--dark-gray);
-      transition: all 300ms ease-out;
 
-      // PHONE:
-      @include respond('phone') {
-        display: none; // Da namestim
+      & svg circle,
+      & svg path {
+        transition: all 300ms ease-out;
       }
-  
-      &:hover {
-        background-color: var(--light-gray);
+
+      &:hover svg circle {
+        fill: var(--dark-gray);
       }
-      
+
       & span {
         padding: 1.7rem 2.4rem 1.9rem 0;
+
+        // PHONE:
+        @include respond('phone') {
+          display: none;
+        }
       }
 
       & .svg {
@@ -193,7 +205,7 @@
 
   // PHONE:
   @include respond('phone') {
-    padding: 4rem 3.125rem 5rem;
+    padding: 3.2rem 2.3rem 4rem;
   }
 }
 
@@ -222,7 +234,7 @@
       // PHONE:
       @include respond('phone') {
         padding-left: 0;
-        padding-top: 3rem;
+        padding-top: 2.4rem;
       }
     }
 
@@ -230,7 +242,7 @@
     &:nth-child(2) {
       // PHONE:
       @include respond('phone') {
-        padding-bottom: 3rem;
+        padding-bottom: 2.4rem;
       }
     }
 
@@ -247,9 +259,9 @@
       // PHONE:
       @include respond('phone') {
         bottom: 0;
-        left: 10%;
-        right: 10%;
-        width: 10rem;
+        left: 15%;
+        right: 15%;
+        width: 8rem;
         height: .1rem;
       }
     }
@@ -257,7 +269,7 @@
     &:nth-child(2)::after {
       // PHONE:
       @include respond('phone') {
-        left: -12%;
+        left: 1%;
       }
     }
   }
@@ -296,7 +308,7 @@
 
   // PHONE:
   @include respond('phone') {
-    padding: 5rem 3rem;
+    padding: 4rem 2.4rem;
   }
 }
 
@@ -311,6 +323,12 @@
       font-weight: 700;
       color: var(--black);
       margin-bottom: 3.5rem;
+
+      // PHONE:
+      @include respond('phone') {
+        font-size: 1.8rem;
+        margin-bottom: 2.4rem;
+      }
     }
 
     &-description,
@@ -320,7 +338,8 @@
 
       // PHONE:
       @include respond('phone') {
-        font-size: 1.75rem;
+        font-size: 1.4rem;
+        line-height: 2.4rem;
       }
     }
 
@@ -367,7 +386,9 @@
 
     // PHONE:
     @include respond('phone') {
-      margin-bottom: 1rem;
+      margin-bottom: .8rem;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
     }
   }
 
@@ -379,7 +400,9 @@
 
     // PHONE:
     @include respond('phone') {
-      margin-bottom: 3rem;
+      margin-bottom: 2.4rem;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
     }
   }
 
@@ -390,7 +413,8 @@
 
     // PHONE:
     @include respond('phone') {
-      font-size: 1.75rem;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
     }
   }
 
@@ -403,7 +427,7 @@
     @include respond('phone') {
       flex-direction: column;
       align-items: flex-start;
-      gap: 3rem;
+      gap: 2.4rem;
     }
 
     &-left {
@@ -420,7 +444,7 @@
 
      // PHONE:
     @include respond('phone') {
-      font-size: 4rem;
+      font-size: 3.2rem;
     }
 
     & + small {
@@ -437,6 +461,12 @@
   font-weight: 700;
   background-color: var(--moderate-cyan);
   transition: all 300ms ease-out;
+
+  // PHONE:
+  @include respond('phone') {
+    padding: 1.55rem 2.95rem;
+    font-size: 1.4rem;
+  }
 
   &:hover {
     background-color: var(--dark-cyan);

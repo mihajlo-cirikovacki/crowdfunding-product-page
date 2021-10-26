@@ -17,17 +17,12 @@ html {
   line-height: 1.957rem;
   color: var(--dark-gray);
   background-color: var(--background);
-
-  // PHONE
-  @include respond('phone') {
-    font-size: 50%; // 1rem = 8px
-  }
+  scroll-behavior: smooth;
 }
 
 body {
   box-sizing: border-box;
 }
-
 
 a, 
 a:visited, 

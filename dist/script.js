@@ -11,6 +11,9 @@ const sectionSupport = document.querySelector('.section-support');
 const suppStands = document.querySelector('.support__stands');
 const overlay2 = document.querySelector('.overlay-2');
 const messageContainer = document.querySelector('.message-container');
+const hamburger = document.querySelector('.hamburger');
+const overlayNav = document.querySelector('.overlay-nav-phone');
+const phoneNav = document.querySelector('.nav-phone');
 
 // ======================= FUNCTIONS:
 
@@ -31,6 +34,12 @@ const removeThankYouMsg = function() {
   overlay2.classList.add('hidden-2');
   messageContainer.classList.add('.hidden-2');
   messageContainer.querySelector('.message').remove();
+}
+
+const toggleHamburger = function() {
+  hamburger.classList.toggle('is-active');
+  phoneNav.classList.toggle('is-active');
+  overlayNav.classList.toggle('hidden');
 }
 
 
@@ -70,18 +79,22 @@ const renderPledgeSupp = function(e) {
 // Render bookmarked styled button:
 const bookmarked = function() {
   const span = this.querySelector('span');
-  const img = this.querySelector('img');
+  const svg = this.querySelector('svg');
+  const circle = svg.querySelector('circle');
+  const path = svg.querySelector('path');
 
   if(span.textContent === 'Bookmark') {
     span.textContent = 'Bookmarked';
     span.style.color = 'var(--dark-cyan)';
     this.style.backgroundColor = 'var(--light-cyan)';
-    img.style.filter = 'var(--filterSvgGreen)';
+    circle.style.fill = 'var(--dark-cyan)';
+    path.style.fill = 'var(--white)';
   } else {
     span.textContent = 'Bookmark';
     span.style.color = 'var(--dark-gray)';
     this.style.backgroundColor = 'var(--background)';
-    img.style.filter = 'var(--filterSvgGray)';
+    circle.style.fill = 'var(--dark-gray)';
+    path.style.fill = 'var(--light-gray)';
   }
 }
 
@@ -176,4 +189,12 @@ document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') removeThankYouMsg();
 });
 
+
+hamburger.addEventListener('click', toggleHamburger);
+
+phoneNav.addEventListener('click', (e) => {
+  const currAnchor = e.target.closest('.nav-phone__link');
+  if(!currAnchor) return;
+  toggleHamburger();
+});
 //# sourceMappingURL=script.js.map
