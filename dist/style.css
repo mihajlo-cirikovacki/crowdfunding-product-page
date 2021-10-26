@@ -364,7 +364,7 @@ a:active {
   border-radius: 3.3rem;
 }
 .stats__bar-progress {
-  width: 75%;
+  width: 50%;
   height: 100%;
   border-radius: inherit;
   background-color: var(--moderate-cyan);

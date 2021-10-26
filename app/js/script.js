@@ -2,6 +2,9 @@
 
 const btnHeader = document.querySelector('.btn--header');
 const bookmarkBtn = document.querySelector('.btn--bookmark');
+const numberOfBacket = document.querySelector('.stats__number--of-backed');
+const totalBacket = document.querySelector('.stats__number--total-backed');
+const statSBarProgress = document.querySelector('.stats__bar-progress');
 const featured = document.querySelector('.featured');
 const modalSupp = document.querySelector('.section-support');
 const overlay = document.querySelector('.overlay');
@@ -54,9 +57,10 @@ const renderPledgeSupp = function(e) {
   pledge.classList.add('pledge');
   currWraper.append(pledge);
   
-  const html = `
+  // NESTO INPUT ZEZA, DA PROVERIM.
+  const html = ` 
     <div class="pledge__input-wraper">  
-      <input type="number" value="25" min="25" class="pledge__input">
+      <input type="number" value="${standNumLeft.textContent}" min="${standNumLeft.textContent}" class="pledge__input">
       <span>$</span>
     </div>
   `;
@@ -166,17 +170,41 @@ sectionSupport.addEventListener('change', (e) => {
   renderPledgeSupp(e); 
 });
 
+
+
+const getSubmitPledge = function(pledge) {
+  const options = {
+    style: 'currency',
+    currency: 'USD',
+  };
+
+  let total = +totalBacket.textContent;
+  total++;
+  totalBacket.textContent = total + '';
+
+  let numOfBacket = +numberOfBacket.textContent;
+  const addPledge = numOfBacket + pledge;
+  // Format to $:
+  const convertDollars = new Intl.NumberFormat('en-Us', options).format(addPledge);
+  // Remover initial $ span:
+  numberOfBacket.previousElementSibling.remove();
+  numberOfBacket.textContent = convertDollars + '';
+}
+
+
 suppStands.addEventListener('click', (e) => {
   const currButton = e.target.closest('.pledge__btn');
   if (!currButton) return;
   const currWraper = e.target.closest('.stand-wraper');
   const standNumLeft = currWraper.querySelector('.stand__left-number');
+  const pledgeInputValue = currWraper.querySelector('.pledge__input').value;
   // Check for left number:
   if (standNumLeft && standNumLeft.textContent === '0') return;
-
-  console.log(currButton);
+  
   addCloseThankYouMSG();
   renderThankYouMsg();
+  // Get submit pledge:
+  getSubmitPledge(+pledgeInputValue);
 });
 
 messageContainer.addEventListener('click', (e) => {
@@ -189,7 +217,6 @@ document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') removeThankYouMsg();
 });
 
-
 hamburger.addEventListener('click', toggleHamburger);
 
 phoneNav.addEventListener('click', (e) => {
@@ -197,3 +224,6 @@ phoneNav.addEventListener('click', (e) => {
   if(!currAnchor) return;
   toggleHamburger();
 });
+
+
+
