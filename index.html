@@ -16,14 +16,24 @@
 <body>
   <header class="header">
     <img src="/images/logo.svg" alt="Crowdfunding logo" class="header__logo">
-    <nav>
+    <nav class="nav">
       <ul class="nav-list">
-       <li><a href="#" class="nav-list__link">About</a></li>
-       <li><a href="#" class="nav-list__link">Discover</a></li>
-       <li><a href="#" class="nav-list__link">Get Started</a></li>
+       <li><a href="#about" class="nav-list__link">About</a></li>
+       <li><a href="#discover" class="nav-list__link">Discover</a></li>
+       <li><a href="#gets-tarted" class="nav-list__link">Get Started</a></li>
       </ul>
     </nav>
+    <button class="hamburger">
+      <div class="bar"></div>
+    </button>
   </header>
+  <div class="overlay-nav-phone hidden">
+    <nav class="nav-phone">
+      <a class="nav-phone__link" href="#about">About</a>
+      <a class="nav-phone__link" href="#discover">Discover</a>
+      <a class="nav-phone__link" href="#gets-tarted">Get Started</a>
+    </nav>
+  </div>
     <main class="main">
       <section class="header-intro">
         <img src="/images/logo-mastercraft.svg" alt="logo" class="header-intro__logo"></img>
@@ -31,17 +41,24 @@
         <p class="header-intro__subheading">A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
         <div class="header-intro__buttons">
           <button class="btn--header">Back this project</button>
-          <button class="btn--bookmark"><img src="/images/icon-bookmark.svg"> <span>Bookmark</span></button>
+          <button class="btn--bookmark">
+            <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#2F2F2F" cx="28" cy="28" r="28"/>
+                <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/>
+              </g>
+            </svg>
+            <span>Bookmark</span></button>
         </div>
       </section>
-      <section class="section-stats">
+      <section class="section-stats" id="discover">
         <div class="stats">
           <div class="stats__box">
-            <p class="stats__number">$89,914</p>
+            <p class="stats__number "><span>$</span><span class="stats__number--of-backed">50000</span></p>
             <small>of $100,000 backed</small>
           </div>
           <div class="stats__box">
-            <p class="stats__number">5,007</p>
+            <p class="stats__number stats__number--total-backed">5000</p>
             <small>total backers</small>
           </div>
           <div class="stats__box">
@@ -49,9 +66,11 @@
             <small>days left</small>
           </div>
         </div>
-        <div class="stats__bar">Bar</div>
+        <div class="stats__bar">
+          <div class="stats__bar-progress"></div>
+        </div>
       </section>
-      <section class="section-featured">
+      <section class="section-featured" id="about">
         <div class="featured">
           <div class="featured__about">
             <h2 class="featured__about-heading">About this project</h2>
@@ -69,7 +88,7 @@
                pens, and USB sticks to be stored under the stand.
             </p>
           </div>
-          <div class="featured__stands">
+          <div class="featured__stands" id="gets-tarted">
             <div class="featured__stand">
               <div class="featured__stand-box">
                 <h3 class="featured__stand-heading">Bamboo Stand</h3>
@@ -127,67 +146,128 @@
           </div>
         </div>
       </section>
-
     </main>
+
+    <!-- ==== MODAL SUPPORT ==== -->
+    <div class="overlay hidden">
+      <section class="section-support hidden">
+        <div class="section-support__close">
+          <img src="/images/icon-close-modal.svg" alt="close modal">
+        </div>
+        <div class="support">
+          <h2 class="support__heading">Back this project</h2>
+          <p class="support__description">
+            Want to support us in bringing Mastercraft 
+            Bamboo Monitor Riser out in the world? 
+          </p>
+          
+          <div class="support__stands">
+            <div class="stand-wraper">
+              <div class="stand">
+                <div class="stand__input-container">
+                  <input type="radio" id="radio-1" name="radio" class="stand__radio-input"></input>
+                  <label for="radio-1" class="stand__radio-label">
+                    <span class="stand__radio-btn"></span>
+                  </label>
+                </div>
+                <div class="stand__container-info--no-reward">
+                  <h3 class="stand__heading">Pledge with no reward</h3>
+                  <div class="stand__description">
+                    Choose to support us without a reward if you simply believe in our project. 
+                    As a backer, you will be signed up to receive product updates via email.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stand-wraper">
+              <div class="stand">
+                <div class="stand__input-container">
+                  <input type="radio" id="radio-2" name="radio" class="stand__radio-input"></input>
+                  <label for="radio-2" class="stand__radio-label">
+                    <span class="stand__radio-btn"></span>
+                  </label>
+                </div>
+                <div class="stand__container">
+                  <div class="stand__container-info">
+                    <div class="stand__intro-box">
+                      <h3 class="stand__heading">Bamboo Stand</h3>
+                      <div class="stand__pledge">Pledge $25 or more</div>
+                    </div>
+                    <div class="stand__left">
+                      <div class="stand__left-number">101</div>
+                      <small class="stand__left-small">left</small>
+                    </div>
+                  </div>
+                  <div class="stand__description">
+                    You get an ergonomic stand made of natural bamboo. 
+                    You've helped us launch our promotional campaign, 
+                    and you’ll be added to a special Backer member list.
+                  </div>
+                  </div>
+              </div>
+            </div>
+            <div class="stand-wraper">
+              <div class="stand">
+                <div class="stand__input-container">
+                  <input type="radio" id="radio-3" name="radio" class="stand__radio-input"></input>
+                  <label for="radio-3" class="stand__radio-label">
+                    <span class="stand__radio-btn"></span>
+                  </label>
+                </div>
+                <div class="stand__container">
+                  <div class="stand__container-info">
+                    <div class="stand__intro-box">
+                      <h3 class="stand__heading">Black Edition Stand</h3>
+                      <div class="stand__pledge">Pledge $75 or more</div>
+                    </div>
+                    <div class="stand__left">
+                      <div class="stand__left-number">64</div>
+                      <small class="stand__left-small">left</small>
+                    </div>
+                  </div>
+                  <div class="stand__description">
+                    You get a Black Special Edition computer stand and a personal thank you. 
+                    You’ll be added to our Backer member list. Shipping is included.
+                  </div>
+                  </div>
+                </div>
+            </div>
+            <div class="stand-wraper">
+              <div class="stand">
+                <div class="stand__input-container">
+                  <input type="radio" id="radio-4" name="radio" class="stand__radio-input"></input>
+                  <label for="radio-4" class="stand__radio-label">
+                    <span class="stand__radio-btn"></span>
+                  </label>
+                </div>
+                <div class="stand__container">
+                  <div class="stand__container-info">
+                    <div class="stand__intro-box">
+                      <h3 class="stand__heading">Mahogany Special Edition</h3>
+                      <div class="stand__pledge">Pledge $200 or more</div>
+                    </div>
+                    <div class="stand__left">
+                      <div class="stand__left-number">0</div>
+                      <small class="stand__left-small">left</small>
+                    </div>
+                  </div>
+                  <div class="stand__description">
+                    You get two Special Edition Mahogany stands, a Backer T-Shirt, 
+                    and a personal thank you. You’ll be added to our Backer member list.  
+                    Shipping is included.
+                  </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==== MODAL THANK YOU MESSAGE ==== -->
+    <div class="overlay-2 hidden-2">
+      <div class="message-container hidden-2"></div>
+    </div>
 </body>
 </html>
 
-
-  <!-- About Discover Get Started Mastercraft Bamboo Monitor Riser A beautiful &
-    handcrafted monitor stand to reduce neck and eye strain. Back this project
-    Bookmark $89,914 of $100,000 backed 5,007 total backers 56 days left About
-    this project The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
-    platform that elevates your screen to a more comfortable viewing height.
-    Placing your monitor at eye level has the potential to improve your posture
-    and make you more comfortable while at work, helping you stay focused on the
-    task at hand. Featuring artisan craftsmanship, the simplicity of design
-    creates extra desk space below your computer to allow notepads, pens, and
-    USB sticks to be stored under the stand. Bamboo Stand Pledge $25 or more You
-    get an ergonomic stand made of natural bamboo. You've helped us launch our
-    promotional campaign, and you’ll be added to a special Backer member list.
-    101 left Select Reward Black Edition Stand Pledge $75 or more You get a
-    Black Special Edition computer stand and a personal thank you. You’ll be
-    added to our Backer member list. Shipping is included. 64 left Select Reward
-    Mahogany Special Edition Pledge $200 or more You get two Special Edition
-    Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
-    to our Backer member list. Shipping is included. 0 left Out of Stock
-
-    <!-- Selection modal start -->
-
-    <!-- Back this project Want to support us in bringing Mastercraft Bamboo Monitor
-    Riser out in the world? Pledge with no reward Choose to support us without a
-    reward if you simply believe in our project. As a backer, you will be signed
-    up to receive product updates via email. Bamboo Stand Pledge $25 or more You
-    get an ergonomic stand made of natural bamboo. You've helped us launch our
-    promotional campaign, and you’ll be added to a special Backer member list.
-    101 left -->
-
-    <!-- Selected pledge start -->
-    <!-- Enter your pledge $25 Continue -->
-    <!-- Selected pledge end -->
-
-    <!-- Black Edition Stand Pledge $75 or more You get a Black Special Edition
-    computer stand and a personal thank you. You’ll be added to our Backer
-    member list. Shipping is included. 64 left -->
-
-    <!-- Selected pledge start -->
-    <!-- Enter your pledge $75 Continue -->
-    <!-- Selected pledge end -->
-
-    <!-- Mahogany Special Edition Pledge $200 or more You get two Special Edition
-    Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
-    to our Backer member list. Shipping is included. 0 left -->
-
-    <!-- Selected pledge  start -->
-    <!-- Enter your pledge $200 Continue -->
-    <!-- Selected pledge end -->
-
-    <!-- Selection modal end -->
-
-    <!-- Success modal start -->
-
-    <!-- Thanks for your support! Your pledge brings us one step closer to sharing
-    Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our
-    campaign is completed. Got it!
-
-    Success modal end --> 
