@@ -57,10 +57,10 @@ const renderPledgeSupp = function(e) {
   pledge.classList.add('pledge');
   currWraper.append(pledge);
   
-  // NESTO INPUT ZEZA, DA PROVERIM.
+  // NESTO INPUT ZEZA, DA PROVERIM (RADI SAMO KADA INPUT IMA VALUE ATTRIBUT, I SAMO ZA TU VREDNOST). 
   const html = ` 
     <div class="pledge__input-wraper">  
-      <input type="number" value="${standNumLeft.textContent}" min="${standNumLeft.textContent}" class="pledge__input">
+      <input type="number" min="${standNumLeft && standNumLeft.textContent !== '' ? standNumLeft.textContent : ''}" class="pledge__input">
       <span>$</span>
     </div>
   `;
@@ -125,6 +125,16 @@ const renderThankYouMsg  = function() {
   message.insertAdjacentHTML('afterbegin', html);
 }
 
+// SET CHECK FOR SUPPORT MODAL:
+const setCheckForSupp = function(standName) {
+  const suportStandNames = sectionSupport.querySelectorAll('.stand__heading');
+  suportStandNames.forEach(stand => {
+    if(standName.textContent === stand.textContent) {
+      const inputContainer = stand.closest('.stand__container');
+      inputContainer.previousElementSibling.querySelector('.stand__radio-input').checked = true;
+    }
+  })
+};
 
 // ======================= EVENT LISTENERS:
 bookmarkBtn.addEventListener('click', bookmarked);
@@ -133,11 +143,13 @@ btnHeader.addEventListener('click', addCloseModal);
 
 featured.addEventListener('click', (e) => {
   const currButton = e.target.closest('.btn--reward');
+  const stand = currButton.closest('.featured__stand');
+  const standName = stand.querySelector('.featured__stand-heading');
   if (!currButton) return;
   const left = currButton.previousElementSibling;
   const numLeft = left.querySelector('.featured__stand-left-num');
   // Check if left number is 0:
-  if (numLeft.textContent !== '0') addCloseModal();
+  if (numLeft.textContent !== '0') setCheckForSupp(standName); addCloseModal();
 });
 
 closeModalBtn.addEventListener('click', (e) => {
@@ -153,12 +165,14 @@ document.addEventListener('keydown', (e) => {
   }
 })
 
+// UMESTO OVOG EVENTA, DA DODAM CONDITION. (PLEDGE TREBA DA SE PRIKAZE NA "CHECKED")
 sectionSupport.addEventListener('change', (e) => {
   const currWraper = e.target.closest('.stand-wraper');
   const currRadioBtn = currWraper.querySelector('.stand__radio-input');
   if(!currRadioBtn) return;
+  const inputRadios = sectionSupport.querySelectorAll('.stand__radio-input');
   const pledges = document.querySelectorAll('.pledge');
-
+  console.log(inputRadios);
   // Check if pladges exist, if extist delete them:
   if (pledges) pledges.forEach(pledge => {
     const standWraper = pledge.closest('.stand-wraper');
@@ -169,8 +183,7 @@ sectionSupport.addEventListener('change', (e) => {
   // Render pledge:
   renderPledgeSupp(e); 
 });
-
-
+  
 
 const getSubmitPledge = function(pledge) {
   const options = {
@@ -189,8 +202,8 @@ const getSubmitPledge = function(pledge) {
   // Remover initial $ span:
   numberOfBacket.previousElementSibling.remove();
   numberOfBacket.textContent = convertDollars + '';
+  // DA DODAM WIDTH ZA PROGRESS BAR
 }
-
 
 suppStands.addEventListener('click', (e) => {
   const currButton = e.target.closest('.pledge__btn');
@@ -198,6 +211,9 @@ suppStands.addEventListener('click', (e) => {
   const currWraper = e.target.closest('.stand-wraper');
   const standNumLeft = currWraper.querySelector('.stand__left-number');
   const pledgeInputValue = currWraper.querySelector('.pledge__input').value;
+  
+  // Check if stand left number exist:
+  if(!standNumLeft) {addCloseThankYouMSG(); renderThankYouMsg(); return};
   // Check for left number:
   if (standNumLeft && standNumLeft.textContent === '0') return;
   
